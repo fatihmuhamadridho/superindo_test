@@ -1,6 +1,6 @@
 import NavbarAdmin from "@/components/organisms/NavbarAdmin/NavbarAdmin";
 import SidebarAdmin from "@/components/organisms/SidebarAdmin/SidebarAdmin";
-import { Box, Container, Flex } from "@mantine/core";
+import { Box, Container, Flex, Paper } from "@mantine/core";
 import Head from "next/head";
 import React from "react";
 

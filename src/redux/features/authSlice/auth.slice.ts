@@ -62,13 +62,13 @@ export const authSlice = createSlice({
     });
     builder.addCase(
       postLogin.fulfilled.type,
-      (state: authState, { payload }: PayloadAction<authState>) => {
+      (state: authState, { payload }: PayloadAction<{ data: authState }>) => {
         state.status = "success";
-        state.message = payload.message;
-        state.access_token = payload.data;
+        state.message = payload.data.message;
+        state.access_token = payload.data.data;
 
         state.authenticated = true;
-        localStorage.setItem("access_token", payload?.data);
+        localStorage.setItem("access_token", payload?.data.data);
       }
     );
     builder.addCase(postLogin.rejected, (state: authState) => {
