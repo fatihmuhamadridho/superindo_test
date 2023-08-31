@@ -1,27 +1,29 @@
 import DataTable, { DataTableHeaderProps } from "@/components/atoms/DataTable";
 import Default from "@/components/templates/Default/Default";
-import { Badge, Button, Flex, Group, Stack, Title } from "@mantine/core";
+import { getAllProductCategory } from "@/redux/features/productCategorySlice/productCategory.action";
+import { productCategoryState } from "@/redux/features/productCategorySlice/productCategory.slice";
+import { Badge, Button, Flex, Group, Stack, Text, Title } from "@mantine/core";
 import { IconPencil, IconTrash } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { productCategoryModelProps } from "../../../server/models/productCategory.model";
 import { withAuth } from "@/hooks/auth/auth";
-import { getAllProduct } from "@/redux/features/productSlice/product.action";
-import { productState } from "@/redux/features/productSlice/product.slice";
-import { productModelProps } from "../../../server/models/product.model";
 
-const ProductPage = () => {
+const ProductCategoryPage = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
-  const productData: productState = useSelector((state: any) => state.product);
+  const productCategoryData: productCategoryState = useSelector(
+    (state: any) => state.productCategory
+  );
 
-  console.log({ productData });
+  console.log({ productCategoryData });
 
   useEffect(() => {
-    dispatch(getAllProduct());
+    dispatch(getAllProductCategory());
   }, [dispatch]);
 
-  const renderActive = (values: productModelProps) => (
+  const renderActive = (values: productCategoryModelProps) => (
     <Badge>{values.active ? "True" : "False"}</Badge>
   );
 
@@ -52,18 +54,21 @@ const ProductPage = () => {
   ];
 
   return (
-    <Default title="Product">
+    <Default title="Product Category">
       <Stack>
-        <Title>Product Data</Title>
+        <Title>Product Category Data</Title>
         <Flex>
-          <Button variant="default" onClick={() => router.push("/product/tambah-product")}>
-            Tambah Product
+          <Button
+            variant="default"
+            onClick={() => router.push("/product-category/tambah-product-category")}
+          >
+            Tambah Product Category
           </Button>
         </Flex>
-        <DataTable header={tableHeader} data={productData?.data} />
+        <DataTable header={tableHeader} data={productCategoryData?.data} />
       </Stack>
     </Default>
   );
 };
 
-export default withAuth(ProductPage);
+export default withAuth(ProductCategoryPage);

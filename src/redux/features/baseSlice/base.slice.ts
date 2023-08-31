@@ -1,23 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+import { getBase } from "./base.action";
+
 export interface baseState {
-  status: "success" | "loading" | "failed" | null;
+  status?: "success" | "loading" | "failed" | number;
   message: string;
   data: any[];
 }
 
-export const useBase = createAsyncThunk("base/getBase", async () => {
-  try {
-    const response = { data: [] };
-    return response.data;
-  } catch (error: any) {
-    return error.response.data;
-  }
-});
-
 const initialState: baseState = {
-  status: null,
+  status: undefined,
   message: "",
   data: [],
 };
@@ -27,15 +20,15 @@ export const baseSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(useBase.pending.type, (state: baseState) => {
+    builder.addCase(getBase.pending.type, (state: baseState) => {
       state.status = "loading";
     });
-    builder.addCase(useBase.fulfilled, (state: baseState, action: PayloadAction<baseState>) => {
+    builder.addCase(getBase.fulfilled, (state: baseState, action: PayloadAction<baseState>) => {
       state.status = "success";
       state.message = action.payload.message;
       state.data = action.payload.data;
     });
-    builder.addCase(useBase.rejected, (state: baseState) => {
+    builder.addCase(getBase.rejected, (state: baseState) => {
       state.status = "failed";
       state.data = [];
     });

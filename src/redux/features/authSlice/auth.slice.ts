@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { getProfile, postLogin } from "./auth.action";
-import { AxiosResponse } from "axios";
 
 export interface authState {
   status?: "success" | "loading" | "failed" | number;
@@ -42,8 +41,8 @@ export const authSlice = createSlice({
       getProfile.fulfilled.type,
       (state: authState, { payload }: PayloadAction<authState>) => {
         state.status = "success";
-        state.message = payload.data.message;
-        state.data = payload.data.data;
+        state.message = payload.message;
+        state.data = payload.data;
         state.initializing = false;
 
         if (payload.status === 200) state.authenticated = true;
@@ -65,11 +64,11 @@ export const authSlice = createSlice({
       postLogin.fulfilled.type,
       (state: authState, { payload }: PayloadAction<authState>) => {
         state.status = "success";
-        state.message = payload.data.message;
-        state.access_token = payload.data.data;
+        state.message = payload.message;
+        state.access_token = payload.data;
 
         state.authenticated = true;
-        localStorage.setItem("access_token", payload?.data.data);
+        localStorage.setItem("access_token", payload?.data);
       }
     );
     builder.addCase(postLogin.rejected, (state: authState) => {
