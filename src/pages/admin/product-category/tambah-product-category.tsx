@@ -1,8 +1,7 @@
-import Default from "@/components/templates/Default/Default";
+import DefaultAdmin from "@/components/templates/DefaultAdmin/DefaultAdmin";
 import { Button, Select, Stack, TextInput, Title } from "@mantine/core";
 import { Form, Formik } from "formik";
 import React from "react";
-import { productCategoryModelProps } from "../../../server/models/productCategory.model";
 
 export interface postProductCategory {
   name: string;
@@ -11,7 +10,7 @@ export interface postProductCategory {
 
 const TambahProductCategoryPage = () => {
   return (
-    <Default title="Tambah Product Category">
+    <DefaultAdmin title="Tambah Product Category">
       <Stack>
         <Title>Tambah Product Category</Title>
         <Formik
@@ -35,7 +34,7 @@ const TambahProductCategoryPage = () => {
           )}
         </Formik>
       </Stack>
-    </Default>
+    </DefaultAdmin>
   );
 };
 

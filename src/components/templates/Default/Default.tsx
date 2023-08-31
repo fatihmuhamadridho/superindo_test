@@ -1,5 +1,4 @@
 import Navbar from "@/components/organisms/Navbar/Navbar";
-import Sidebar from "@/components/organisms/Sidebar/Sidebar";
 import { Box, Container, Flex } from "@mantine/core";
 import Head from "next/head";
 import React from "react";
@@ -17,12 +16,9 @@ const Default = ({ title, children }: DefaultProps) => {
       </Head>
       <Container fluid p={0} mx={0}>
         <Navbar />
-        <Flex>
-          <Sidebar />
-          <Box w={"100%"} p={16}>
-            {children}
-          </Box>
-        </Flex>
+        <Box w={"100%"} p={16}>
+          {children}
+        </Box>
       </Container>
     </>
   );

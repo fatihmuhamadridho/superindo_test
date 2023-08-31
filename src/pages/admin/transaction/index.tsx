@@ -1,12 +1,12 @@
 import DataTable, { DataTableHeaderProps } from "@/components/atoms/DataTable";
-import Default from "@/components/templates/Default/Default";
+import DefaultAdmin from "@/components/templates/DefaultAdmin/DefaultAdmin";
 import { Badge, Stack, Title } from "@mantine/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withAuth } from "@/hooks/auth/auth";
 import { getAllTransaction } from "@/redux/features/transactionSlice/transaction.action";
 import { transactionState } from "@/redux/features/transactionSlice/transaction.slice";
-import { transactionModelProps } from "../../../server/models/transaction.model";
+import { transactionModelProps } from "../../../../server/models/transaction.model";
 
 const TransactionPage = () => {
   const dispatch: any = useDispatch();
@@ -38,12 +38,12 @@ const TransactionPage = () => {
   ];
 
   return (
-    <Default title="Transaction">
+    <DefaultAdmin title="Transaction">
       <Stack>
         <Title>Transaction Data</Title>
         <DataTable header={tableHeader} data={transactionData?.data} />
       </Stack>
-    </Default>
+    </DefaultAdmin>
   );
 };
 

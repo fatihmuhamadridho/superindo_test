@@ -52,7 +52,7 @@ export function withoutAuth(Component: any) {
     }, [dispatch]);
 
     useEffect(() => {
-      if (authenticated && !initializing) router.push("/");
+      if (authenticated && !initializing) router.push("/admin/dashboard");
       if (!authenticated && !initializing) setIsLoading(false);
     }, [authenticated, initializing, router]);
 
