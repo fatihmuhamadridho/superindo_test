@@ -38,12 +38,36 @@ const ProductPage = () => {
       key: "index",
     },
     {
-      label: "Name",
+      label: "plu",
+      key: "plu",
+    },
+    {
+      label: "name",
       key: "name",
+    },
+    {
+      label: "product_category_id",
+      key: "product_category_id",
     },
     {
       label: "Active",
       key: renderActive,
+    },
+    {
+      label: "created_user",
+      key: "created_user",
+    },
+    {
+      label: "updated_user",
+      key: "updated_user",
+    },
+    {
+      label: "created_date",
+      key: "created_date",
+    },
+    {
+      label: "updated_date",
+      key: "updated_date",
     },
     {
       label: "Actions",

@@ -17,9 +17,11 @@ const NavbarAdmin = () => {
     <Header height={60}>
       <Flex px={16} mx={"auto"} h={"100%"} align={"center"} justify={"space-between"}>
         <Link href={"/admin/dashboard"}>
-          <Group spacing={2}>
-            <Avatar size={40} />
-            <Text>Superindo CMS</Text>
+          <Group spacing={8}>
+            <Avatar src={"../../favicon.ico"} size={40} />
+            <Text fz={22} fw={600} transform="uppercase">
+              Superindo CMS
+            </Text>
           </Group>
         </Link>
         <Menu>
